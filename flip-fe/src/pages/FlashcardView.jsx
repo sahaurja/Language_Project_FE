@@ -1,5 +1,3 @@
-import Flashcard from "../components/Flashcard"
-import AllFlashcards from "./AllFlashcards"
 import { useNavigate } from "react-router-dom"
 import {useState, useEffect} from "react"
 import axios from "axios"
@@ -51,15 +49,23 @@ export default function FlashcardView(){
     }, [userId])
 
     return(
-        <>
-            <h1 className = "text-center font-[Figtree]">View all Your Flashcards in One Place</h1>
-            {/* map the data from allCards */}
-            {allCards.map(card => 
-                <div key = {card.translator_id}>
-                    <SmallFlashcard translator_id = {card.translator_id} input_text={card.input_text} picture_key={card.picture_key} output_text={card.output_text}/>
-                    <br/>
+        <div className="flex justify-center py-10 px-4 font-[Figtree]">
+            <div className="w-full max-w-2xl flex flex-col gap-6">
+                <div className="text-center">
+                    <h1 className="text-2xl font-semibold text-gray-800">Your Flashcards</h1>
+                    <p className="text-sm text-gray-500 mt-1">All your cards in one place</p>
                 </div>
-            )}
-        </>
+
+                {allCards.length === 0 ? (
+                    <div className="bg-white rounded-2xl shadow-md p-6 text-center text-gray-500">No flashcards yet</div>
+                ) : (
+                    <div className="flex flex-col gap-4">
+                        {allCards.map(card =>
+                            <SmallFlashcard key={card.translator_id} translator_id={card.translator_id} input_text={card.input_text} picture_key={card.picture_key} output_text={card.output_text}/>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
     )
 }

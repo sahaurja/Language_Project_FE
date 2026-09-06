@@ -28,7 +28,13 @@ body,
 
 body {
   margin: 0;
-  background: white;
+  background: linear-gradient(#FFEFB0, #FFFFFF);
+}
+
+@layer base {
+  body {
+    font-family: "Figtree", sans-serif;
+  }
 }
 
 .home-page {
@@ -36,7 +42,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#FFEFB0, #FFFFFF);
 }
 
 .home-content {
