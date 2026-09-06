@@ -59,28 +59,28 @@ export default function FAQ() {
       <div className="w-full max-w-2xl mx-auto">
         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography component="span">Question 1</Typography>
+            <Typography component="span">How Can I Get Started?</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Answer 1</Typography>
+            <Typography>Sign up using your credentials and click on the translator tab to translate sentences. After you click on the save flashcards button, going to the flashcards tab should reveal generated flashcards!</Typography>
           </AccordionDetails>
         </Accordion>
 
         <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography component="span">Question 2</Typography>
+            <Typography component="span">Can I Translate Sentences From Multiple Languages?</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Answer 2</Typography>
+            <Typography>Yes! The translator tab allows you to pick any language you'd like to translate from and translate to! You can learn as many or as much languages as you'd like!</Typography>
           </AccordionDetails>
         </Accordion>
 
         <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography component="span">Question 3</Typography>
+            <Typography component="span">How to Upload Images to Your Flashcards?</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Answer 3</Typography>
+            <Typography>Go to your flashcards tab and upload them by clicking "edit"</Typography>
           </AccordionDetails>
         </Accordion>
       </div>
