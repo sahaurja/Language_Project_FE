@@ -1,7 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
+import "./ProgressPopup.css"
 
-export default function EditFlashcardPopup({translator_id, init_input, init_output, init_pic}){
+export default function EditFlashcardPopup({translator_id, init_input, init_output, init_pic, onClose}){
 
     const [selectedFile, setSelectedFile] = useState(null)
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -46,13 +47,14 @@ export default function EditFlashcardPopup({translator_id, init_input, init_outp
             }
         }
         try{
-            //update request 
+            //update request
             const res = await axios.put(`${BACKEND_URL}/updateFlashcard`, {
             translator_id:translator_id,
             input_text:flashcardValues.input_text,
             output_text:flashcardValues.output_text,
             pic_key:picture_key
             })
+            if(onClose) onClose()
         }
         catch (err){
             console.log(err)
@@ -62,18 +64,32 @@ export default function EditFlashcardPopup({translator_id, init_input, init_outp
 
     return(
         <>
-            <div className = "border-solid mt-10 p-5 bg-white w-fit">
-                <h3>Edit Flashcard</h3>
-                <form className="flex flex-col mb-5" onSubmit={(e) => handleFormSubmit(e)}>
-                    <input type = "text" name = "input_text" placeholder = "input text" className="w-100" value = {flashcardValues.input_text} onChange = {(e) => handleFormChange(e)}/>
-                    <br/>
-                    <input type = "text" name = "output_text" placeholder = "output text" className = "w-100" value = {flashcardValues.output_text} onChange = {(e) => handleFormChange(e)}/>
-                    <br/>
-                    <input type = "file" onChange={(e) => handleFileChange(e)}/>
-                    <br/>
-                    <input type = "submit" value = "Edit" className = "w-40" />
-                </form>
+            <div className="modal" id="modal">
+                <div className="modal-header">
+                    <div className="title">Edit Flashcard</div>
+                    <button type="button" className="close-button" onClick={onClose}>&times;</button>
+                </div>
+
+                <div className="modal-body">
+                    <form className="flex flex-col gap-3 font-[Figtree]" onSubmit={(e) => handleFormSubmit(e)}>
+                        <label className="flex flex-col gap-1 text-sm font-medium text-gray-700">
+                            Input text
+                            <input type="text" name="input_text" placeholder="input text" className="border border-gray-300 rounded-lg px-3 py-2 font-normal focus:outline-none focus:ring-2 focus:ring-yellow-500" value={flashcardValues.input_text} onChange={(e) => handleFormChange(e)}/>
+                        </label>
+
+                        <label className="flex flex-col gap-1 text-sm font-medium text-gray-700">
+                            Output text
+                            <input type="text" name="output_text" placeholder="output text" className="border border-gray-300 rounded-lg px-3 py-2 font-normal focus:outline-none focus:ring-2 focus:ring-yellow-500" value={flashcardValues.output_text} onChange={(e) => handleFormChange(e)}/>
+                        </label>
+
+                        <input type="file" onChange={(e) => handleFileChange(e)} className="text-sm text-gray-600 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-gray-100 file:text-gray-700 file:font-medium hover:file:bg-gray-200 file:cursor-pointer cursor-pointer"/>
+
+                        <input type="submit" value="Save changes" className="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg px-4 py-2 transition-colors cursor-pointer"/>
+                    </form>
+                </div>
             </div>
+
+            <div id="overlay" className="active" onClick={onClose}></div>
         </>
     )
 }

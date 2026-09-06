@@ -1,5 +1,3 @@
-import React, {Router} from 'react';
-import './Translator.css'
 import {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
@@ -117,40 +115,49 @@ function Translator() {
 }, [entryText, entryLanguage, outputLanguage]);
 
   return(
-    <div className='gradient-background'>
-    
-<div className='translator-base'>
-    <div className='translator-language-base'>
-        <label>
-            <select value={entryLanguage} onChange={(e) => setEntryLanguage(e.target.value)} className='translator-entry-language' defaultValue="Select Entry Language">
-                <option value="">Select Entry Language</option>
-                <option value="EN">English</option>
-                <option value="FR">French</option>
-                <option value="ES">Spanish</option>
-            </select>
-        </label>
-         <button type="button" onClick={save_translation} className ="save-to-database-btn bg-yellow-500 mx-4 shadow-lg shadow-yellow-500/50 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-yellow-600"> Add translation to flashcards </button>
-        <label>
-            <select value={outputLanguage} onChange={(e) => setOutputLanguage(e.target.value)} id="output-language" className='translator-output-language' defaultValue="Select Translated Language">
-                <option value=""> Select Translated Language </option>
-                <option value="EN">English</option>
-                <option value="FR">French</option>
-                <option value="ES">Spanish</option>
-            </select>
-        </label>
+    <div className="flex justify-center py-10 px-4 font-[Figtree]">
+      <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-6 flex flex-col gap-4">
+        <div className="text-center mb-2">
+          <h1 className="text-2xl font-semibold text-gray-800">Translator</h1>
+          <p className="text-sm text-gray-500 mt-1">Translate what you actually use, then save it as a flashcard</p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-between">
+          <select value={entryLanguage} onChange={(e) => setEntryLanguage(e.target.value)} className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" defaultValue="Select Entry Language">
+            <option value="">Select Entry Language</option>
+            <option value="EN">English</option>
+            <option value="FR">French</option>
+            <option value="ES">Spanish</option>
+          </select>
+
+          <button type="button" onClick={save_translation} className="bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg px-4 py-2 transition-colors whitespace-nowrap cursor-pointer">Add to flashcards</button>
+
+          <select value={outputLanguage} onChange={(e) => setOutputLanguage(e.target.value)} id="output-language" className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" defaultValue="Select Translated Language">
+            <option value=""> Select Translated Language </option>
+            <option value="EN">English</option>
+            <option value="FR">French</option>
+            <option value="ES">Spanish</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <textarea value={entryText} onChange={(e) => setEntryText(e.target.value)} id="translation-entry" className="flex-1 h-64 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none" placeholder="Enter here:"></textarea>
+          <textarea value={outputText} readOnly className="flex-1 h-64 border border-gray-300 rounded-lg p-3 bg-gray-50 resize-none" placeholder="Translation:"></textarea>
+        </div>
+
+        {/* add image (optional) */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="flashcard-image" className="text-sm font-medium text-gray-700">Flashcard image (optional)</label>
+          <div className="flex items-center gap-3">
+            <label htmlFor="flashcard-image" className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg px-4 py-2 transition-colors text-sm cursor-pointer whitespace-nowrap">
+              Upload flashcard image
+            </label>
+            <input id="flashcard-image" type="file" accept="image/*" onChange={(e) => handleFileChange(e)} className="hidden"/>
+            <span className="text-sm text-gray-500 truncate">{selectedFile ? selectedFile.name : "No image selected"}</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div className="translator-text-base">
-       <label> 
-        <textarea value={entryText} onChange={(e) => setEntryText(e.target.value)} id="translation-entry" className='translator-entry' placeholder="Enter here:"></textarea>
-       </label>
-         <label> 
-        <textarea value={outputText} readOnly className='translator-output' placeholder="Translation:"></textarea>
-       </label>
-    </div>
-    {/* add image (optional) */}
-    <input type="file" className = "flash-img" style = {{marginTop:"25px", marginBottom:"25px"}} onChange = {(e) => handleFileChange(e)}/>
-</div>
-</div>
   )
 }
 
