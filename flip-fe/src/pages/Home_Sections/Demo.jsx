@@ -8,11 +8,12 @@ export default function Demo () {
         <>
         <ScrollFloat
   animationDuration={1}
-  textClassName="main-language-text"
+  textClassName="sub-language-text"
   ease='back.inOut(2)'
   scrollStart='center bottom+=0%'
   scrollEnd='bottom bottom-=60%'
   stagger={0.2}
+  
 >
 Learn Language with Efficiency!
      </ScrollFloat>
@@ -71,7 +72,7 @@ Interactive Review
 Stay in touch with your Learning 
      </ScrollFloat>
                     </div>
-                    <img src = {FlashCardDemo} className = "w-150 object-contain mr-20 pl-30"/>
+                    <img src = {FlashCardDemo} className = "w-120 h-200 object-contain mr-20 pl-30"/>
                 </div>
             </section>
         </>

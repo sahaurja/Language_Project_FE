@@ -5,8 +5,15 @@
   font-weight: 400;
 }
 
+.sub-language-text {
+  font-size: 2.5rem;
+  margin-left: 32%;
+  font-family: "Figtree";
+  font-weight: 600;
+}
+
 .translate-text {
   font-size: 1.1rem;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Figtree";
   font-weight: 300;
 }

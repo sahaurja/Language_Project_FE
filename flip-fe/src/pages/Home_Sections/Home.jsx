@@ -26,10 +26,10 @@ export default function Home() {
               style={{ backgroundImage: `url(${Background})` }}
             />
 
-            <div className="relative z-10 font-[Bebas_Neue] flex flex-col items-center justify-center pt-40">
+            <div className="relative z-10 font-[Figtree] flex flex-col items-center justify-center pt-40">
 
               <h1
-                className="font-[Indie_Flower] text-black animate-typing overflow-hidden whitespace-nowrap inline-block text-5xl"
+                className="font-[Indie_Flower] text-black animate-typing overflow-hidden whitespace-nowrap inline-block text-5xl ml-5"
                 style={{ "--typing-width": "5ch" }}
               >
                 HELIO
@@ -37,11 +37,11 @@ export default function Home() {
 
               <h1
                 className="animate-typing overflow-hidden whitespace-nowrap flex items-center gap-2 inline-flex"
-                style={{ "--typing-width": "36.7ch" }}
+                style={{ "--typing-width": "30.7ch" }}
               >
                 <RotatingText
                   texts={['Personalized', 'Effective', 'Streamlined', 'Practical']}
-                  mainClassName="px-2 sm:px-2 md:px-3 bg-blue-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg w-32"
+                  mainClassName="px-2 sm:px-2 md:px-3 bg-blue-300 text-black  overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg w-42"
                   staggerFrom="last"
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
@@ -63,14 +63,14 @@ export default function Home() {
               </h1>
 
               <h1
-                className="animate-typing overflow-hidden whitespace-nowrap inline-block"
-                style={{ "--typing-width": "19ch" }}
+                className="animate-typing overflow-hidden  whitespace-nowrap inline-block ml-5"
+                style={{ "--typing-width": "16ch" }}
               >
                 Built for you, With You
               </h1>
 
               <p
-                className="animate-typing overflow-hidden whitespace-nowrap inline-block"
+                className="animate-typing overflow-hidden whitespace-nowrap inline-block ml-28"
                 style={{ "--typing-width": "47ch" }}
               >
                 Learn from your own experiences. Don't just watch. DO
@@ -79,7 +79,7 @@ export default function Home() {
               <Link to="/login">
                 <button
                   type="button"
-                  className="relative rounded-full text-slate-40 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 h-14 bg-linear-65 from-green-700 to-yellow-400 p-4 font-[Indie_Flower] text-[18px] cursor-pointer hover:animate-[spin_1s_ease-in-out_1]"
+                  className="relative rounded-full text-slate-40 ml-5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 h-14 bg-linear-65 from-green-700 to-yellow-400 p-4 font-[Indie_Flower] text-[18px] cursor-pointer hover:animate-[spin_1s_ease-in-out_1]"
                 >
                   Start Growing
                 </button>
